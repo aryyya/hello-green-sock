@@ -29,4 +29,10 @@ window.addEventListener('load', () => {
       timeline.resume()
     }
   })
+  
+  document.addEventListener('wheel', event => {
+    const { wheelDelta } = event
+    TweenMax.to(timeline, 0.25, { progress: (wheelDelta > 0 ? '+=0.1' : '-=0.1')})
+  })
+
 })
