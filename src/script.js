@@ -1,6 +1,6 @@
 import {
   TweenMax,
-  TimelineMax
+  Elastic
 } from 'gsap'
 
 window.addEventListener('load', () => {
@@ -9,10 +9,10 @@ window.addEventListener('load', () => {
   box.setAttribute('class', 'box')
   document.body.appendChild(box)
 
-  TweenMax.set(box, { transformPerspective: 500 })
-
-  box.addEventListener('click', () => {
-    TweenMax.to(box, 0.5, { rotationX: '60' })
+  TweenMax.to(box, 2, {
+    scale: 1.25,
+    repeat: -1,
+    yoyo: true,
+    ease: Elastic.easeInOut
   })
-
 })
