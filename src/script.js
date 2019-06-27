@@ -35,4 +35,10 @@ window.addEventListener('load', () => {
     TweenMax.to(timeline, 0.25, { progress: (wheelDelta > 0 ? '+=0.1' : '-=0.1')})
   })
 
+  document.addEventListener('click', event => {
+    const { x, y } = event
+
+    TweenMax.from('#box', 1, { x, y })
+  })
+
 })
