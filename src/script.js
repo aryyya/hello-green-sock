@@ -1,4 +1,7 @@
-import { TweenMax } from 'gsap'
+import {
+  TweenMax,
+  TimelineMax
+} from 'gsap'
 
 window.addEventListener('load', () => {
 
@@ -10,9 +13,14 @@ window.addEventListener('load', () => {
     y: '50px'
   })
 
-  document.addEventListener('click', () => {
-    TweenMax.to('#box', 0.5, {
-      rotation: '+=30'
-    })
+  const timeline = new TimelineMax()
+  timeline.pause()
+  timeline.to('#box', 0.5, { x: 100 })
+  timeline.to('#box', 0.5, { y: 100 })
+  timeline.to('#box', 0.5, { x: 50 })
+  timeline.to('#box', 0.5, { y: 50 })
+
+  document.querySelector('#box').addEventListener('click', () => {
+    timeline.resume()
   })
 })
