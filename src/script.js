@@ -5,40 +5,25 @@ import {
 
 window.addEventListener('load', () => {
 
-  TweenMax.set('#box', {
-    backgroundColor: 'green',
-    width: '50px',
-    height: '50px',
-    x: '50px',
-    y: '50px'
-  })
+  const divs = Array.from({ length: 50 }, () => (
+    document.createElement('div')
+  ))
 
-  const timeline = new TimelineMax({
-    repeat: -1
-  })
-  timeline.pause()
-  timeline.to('#box', 0.5, { x: 100 })
-  timeline.to('#box', 0.5, { y: 100 })
-  timeline.to('#box', 0.5, { x: 50 })
-  timeline.to('#box', 0.5, { y: 50 })
-
-  document.querySelector('#box').addEventListener('click', () => {
-    if (timeline.isActive()) {
-      timeline.pause()
-    } else {
-      timeline.resume()
-    }
-  })
-  
-  document.addEventListener('wheel', event => {
-    const { wheelDelta } = event
-    TweenMax.to(timeline, 0.25, { progress: (wheelDelta > 0 ? '+=0.1' : '-=0.1')})
+  divs.forEach(div => {
+    TweenMax.set(div, {
+      position: 'absolute',
+      x: `${Math.random() * window.innerWidth}px`,
+      y: `${Math.random() * window.innerHeight}px`,
+      width: 20,
+      height: 20,
+      backgroundColor: 'orange',
+      borderRadius: '100px'
+    })
+    document.body.appendChild(div)
   })
 
   document.addEventListener('click', event => {
     const { x, y } = event
-
-    TweenMax.from('#box', 1, { x, y })
+    TweenMax.to(divs, 1, { x, y })
   })
-
 })
