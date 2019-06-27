@@ -10,3 +10,17 @@ body {
   box-sizing: border-box;
   font-family: sans-serif;
 }
+
+.box {
+  width: 100px;
+  height: 100px;
+  background-color: red;
+}
+
+.hover {
+  box-shadow: 0 10px 10px rgba(0, 0, 0, .2);
+}
+
+.down {
+  background-color: blue;
+}

@@ -5,27 +5,21 @@ import {
 
 window.addEventListener('load', () => {
 
-  const divs = Array.from({ length: 50 }, () => (
-    document.createElement('div')
-  ))
+  const box = document.createElement('div')
+  box.setAttribute('class', 'box')
+  document.body.appendChild(box)
 
-  divs.forEach(div => {
-    TweenMax.set(div, {
-      position: 'absolute',
-      x: `${Math.random() * window.innerWidth}px`,
-      y: `${Math.random() * window.innerHeight}px`,
-      width: 20,
-      height: 20,
-      backgroundColor: 'orange',
-      borderRadius: '100px'
-    })
-    document.body.appendChild(div)
+  box.addEventListener('mouseover', () => {
+    TweenMax.to(box, 0.5, { className: '+=hover' })
   })
-  
-  TweenMax.to(divs, 10, { x: 100, y: 100 })
-
-  document.addEventListener('click', event => {
-    TweenMax.killTweensOf(event.target)
+  box.addEventListener('mouseout', () => {
+    TweenMax.to(box, 0.5, { className: '-=hover' })
+  })
+  box.addEventListener('mousedown', () => {
+    TweenMax.to(box, 0.5, { className: '+=down' })
+  })
+  box.addEventListener('mouseup', () => {
+    TweenMax.to(box, 0.5, { className: '-=down' })
   })
 
 })
