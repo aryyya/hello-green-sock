@@ -10,9 +10,3 @@ body {
   box-sizing: border-box;
   font-family: sans-serif;
 }
-
-#box {
-  width: 25px;
-  height: 25px;
-  background-color: DeepSkyBlue;
-}
