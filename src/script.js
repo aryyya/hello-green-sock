@@ -13,7 +13,9 @@ window.addEventListener('load', () => {
     y: '50px'
   })
 
-  const timeline = new TimelineMax()
+  const timeline = new TimelineMax({
+    repeat: -1
+  })
   timeline.pause()
   timeline.to('#box', 0.5, { x: 100 })
   timeline.to('#box', 0.5, { y: 100 })
@@ -21,6 +23,10 @@ window.addEventListener('load', () => {
   timeline.to('#box', 0.5, { y: 50 })
 
   document.querySelector('#box').addEventListener('click', () => {
-    timeline.resume()
+    if (timeline.isActive()) {
+      timeline.pause()
+    } else {
+      timeline.resume()
+    }
   })
 })
